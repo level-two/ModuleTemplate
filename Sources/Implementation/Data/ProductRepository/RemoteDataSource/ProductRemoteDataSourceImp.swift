@@ -18,18 +18,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension ProductsViewModel {
-    static var mock: ProductsViewModel {
-        ProductsViewModel(getProductsUseCase: GetProductsUseCaseMock())
-    }
-
-    private struct GetProductsUseCaseMock: GetProductsUseCase {
-        func execute(range: Range<Int>) async throws -> [Product] {
-            [
-                Product(id: "1", name: "Product 1", price: 100),
-                Product(id: "2", name: "Product 2", price: 200),
-                Product(id: "3", name: "Product 3", price: 300),
-            ]
-        }
+struct ProductRemoteDataSourceImp: ProductRemoteDataSource {
+    func getProducts(range: Range<Int>) async throws -> [Product] {
+        [] // TBI
     }
 }

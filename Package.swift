@@ -34,14 +34,11 @@ let package = Package(
             targets: ["Products"]
         )
     ],
-    dependencies: [
-        .package(path: "../Cms"),
-        .package(path: "../Logger")
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "Products",
-            dependencies: ["Cms", "Logger"],
+            dependencies: [],
             path: "Sources"
         ),
         .testTarget(

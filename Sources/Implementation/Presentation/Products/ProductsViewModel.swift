@@ -40,13 +40,13 @@ final class ProductsViewModel: ObservableObject {
             Task {
                 isLoading = true
                 do {
-                    products = try await getProductsUseCase.execute()
+                    products = try await getProductsUseCase.execute(range: 0..<20)
                 } catch {
                     print("Error fetching products: \(error)")
                 }
                 isLoading = false
             }
-        case .filterByName(let productName):
+        case .filterByName:
             // TBI
             break
         }

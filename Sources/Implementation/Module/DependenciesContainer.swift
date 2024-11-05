@@ -67,6 +67,17 @@ private struct Data {
     let external: ProductsExternalDependencies
 
     func productRepository() -> ProductRepository {
-        ProductRepositoryImp()
+        ProductRepositoryImp(
+            remoteDataSource: productRemoteDataSource(),
+            cache: productCache()
+        )
+    }
+
+    private func productRemoteDataSource() -> ProductRemoteDataSource {
+        ProductRemoteDataSourceImp()
+    }
+
+    private func productCache() -> ProductCache {
+        ProductCacheImp()
     }
 }

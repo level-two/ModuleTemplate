@@ -18,14 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-import Cms
-
 public struct ProductsExternalDependencies {
-    let cmsModule: () -> Cms
-
-    public init(
-        cmsModule: @escaping () -> Cms
-    ) {
-        self.cmsModule = cmsModule
-    }
+    public init() { }
 }

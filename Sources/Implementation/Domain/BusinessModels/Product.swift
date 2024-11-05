@@ -24,7 +24,6 @@ public struct Product: Identifiable {
     public let id: ProductId
     public let name: String
     public let price: Double
-    public let categories: [CategoryId]
 
     // all nested types should go after properties
     public typealias ProductId = String

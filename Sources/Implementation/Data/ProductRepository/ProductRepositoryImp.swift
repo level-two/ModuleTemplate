@@ -18,18 +18,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension ProductsViewModel {
-    static var mock: ProductsViewModel {
-        ProductsViewModel(getProductsUseCase: GetProductsUseCaseMock())
-    }
+struct ProductRepositoryImp: ProductRepository {
+    let remoteDataSource: ProductRemoteDataSource
+    let cache: ProductCache
 
-    private struct GetProductsUseCaseMock: GetProductsUseCase {
-        func execute(range: Range<Int>) async throws -> [Product] {
-            [
-                Product(id: "1", name: "Product 1", price: 100),
-                Product(id: "2", name: "Product 2", price: 200),
-                Product(id: "3", name: "Product 3", price: 300),
-            ]
+    func getProducts(range: Range<Int>) async throws -> [Product] {
+        if let cachedPage = cache.getCachedProducts(range: range) {
+            return cachedPage
         }
+
+        let products = try await remoteDataSource.getProducts(range: range)
+        cache.cacheProducts(products, range: range)
+        return products
     }
 }

@@ -18,18 +18,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-extension ProductsViewModel {
-    static var mock: ProductsViewModel {
-        ProductsViewModel(getProductsUseCase: GetProductsUseCaseMock())
+struct ProductCacheImp: ProductCache {
+    func getCachedProducts(range: Range<Int>) -> [Product]? {
+        nil // TBI
     }
 
-    private struct GetProductsUseCaseMock: GetProductsUseCase {
-        func execute(range: Range<Int>) async throws -> [Product] {
-            [
-                Product(id: "1", name: "Product 1", price: 100),
-                Product(id: "2", name: "Product 2", price: 200),
-                Product(id: "3", name: "Product 3", price: 300),
-            ]
-        }
+    func cacheProducts(_ products: [Product], range: Range<Int>) {
+        // TBI
     }
 }

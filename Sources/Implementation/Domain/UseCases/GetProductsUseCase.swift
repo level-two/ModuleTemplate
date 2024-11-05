@@ -19,13 +19,13 @@
 // SOFTWARE.
 
 protocol GetProductsUseCase {
-    func execute(filter: ProductFilter, order: ProductSortOrder, range: Range<Int>) async throws -> [Product]
+    func execute(range: Range<Int>) async throws -> [Product]
 }
 
 struct GetProductsUseCaseImp: GetProductsUseCase {
     let productRepository: ProductRepository
 
-    func execute(filter: ProductFilter, order: ProductSortOrder, range: Range<Int>) async throws -> [Product] {
-        try await productRepository.getProducts(filter: filter, order: order, range: range)
+    func execute(range: Range<Int>) async throws -> [Product] {
+        try await productRepository.getProducts(range: range)
     }
 }

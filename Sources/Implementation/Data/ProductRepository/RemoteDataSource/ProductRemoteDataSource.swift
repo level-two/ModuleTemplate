@@ -18,12 +18,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct ProductRepositoryImp: ProductRepository {
-    func getProducts(filter: ProductFilter, order: ProductSortOrder, range: Range<Int>) async throws -> [Product] {
-        []
-    }
-
-    func getProduct(productId: ProductId) async throws -> Product {
-        fatalError()
-    }
+protocol ProductRemoteDataSource {
+    func getProducts(range: Range<Int>) async throws -> [Product]
 }

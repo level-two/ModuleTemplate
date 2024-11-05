@@ -18,8 +18,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-struct CategoryRepositoryImp: CategoryRepository {
-    func getCategories() async throws -> [Category] {
-        []
-    }
+protocol ProductCache {
+    func getCachedProducts(range: Range<Int>) -> [Product]?
+    func cacheProducts(_ products: [Product], range: Range<Int>)
 }
